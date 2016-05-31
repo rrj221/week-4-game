@@ -7,6 +7,81 @@
 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 </head>
 <body>
+	<header>Star Wars RPG</header>
+	<div class="container">
+		
+		<div class="row">
+			<p class="chooseText">Choose Your Character</p>
+		</div>
+
+		<div class="row characterSlots">
+		    <div class="col-md-3" id="lukeMainSlot">
+		        <div class="thumbnail" id="luke">
+		            <img src="assets/images/luke.png" alt="Luke">
+		            <div class="caption">
+		                <h4>Luke Skywalker</h4>
+		                <p id="lukeHpDisplay">HP: 120</p>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="col-md-3" id="jawaMainSlot">
+		        <div class="thumbnail" id="jawa">
+		            <img src="assets/images/jawa.png" alt="Jawas">
+		            <div class="caption">
+		                <h4>Jawas</h4>
+		                <p id="jawaHpDisplay">HP: 100</p>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="col-md-3" id="soloMainSlot">
+		        <div class="thumbnail" id="solo">
+		            <img src="assets/images/hanSolo.png" alt="Solo">
+		            <div class="caption">
+		                <h4>Han Solo</h4>
+		                <p id="soloHpDisplay">HP: 150</p>
+		            </div>
+		        </div>
+		    </div>	
+		    <div class="col-md-3" id="vaderMainSlot">
+		        <div class="thumbnail" id="vader">
+		            <img src="assets/images/vader.png" alt="Vader">
+		            <div class="caption">
+		                <h4>Darth Vader</h4>
+		                <p id="vaderHpDisplay">HP: 180</p>
+		            </div>
+		        </div>
+		    </div>		    
+		</div>
+
+		<div class="row battleZone">
+			<p>Battle Zone</p>
+			<div class="battleZoneText">
+				<p class="yourCharacterText">Your Character</p>
+				<p class="enemyText">Enemy</p>
+			</div>
+		</div>
+		<div class="row battleZone battleZoneBody">	
+			<div class="col-md-3" id="PlayerZone">
+			
+			</div>
+			<div class="col-md-6">
+				<img id="saber" src="assets/images/sabers.jpg" alt="laser"/>
+			</div>
+			<div class="col-md-3" id="EnemyZone">
+ 				
+			</div>
+		</div>
+		<div class="row battleZone battleZoneButtons">
+			<p><a id="button" class="btn btn-primary btn-lg attackButton resetButton" href="#" role="button" >Attack!</a></p>
+		</div>
+		<div class="row battleZone battleUpdates">
+			<p id="attackUpdate"></p>
+			<p id="counterUpdate"></p>
+		</div>
+
+
+
+	</div>
 
 
 
@@ -15,10 +90,9 @@
 
 
 
-
-
-
-<script type="text/javascript" src="assets/javascript/rpg.js"></script>
+<!-- <script type="text/javascript" src="assets/javascript/rpg.js"></script> -->
+<!-- <script type="text/javascript" src="assets/javascript/rpg-somestuffworkingbeforehashmaptry.js"></script> -->
+<script type="text/javascript" src="assets/javascript/rpg-methodsintoonefunction.js"></script>
 
 </body>
 </html>

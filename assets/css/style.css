@@ -1,0 +1,65 @@
+body {
+	background-image: url("../images/deathStar.jpg");
+}
+
+/*Failing to decode*/
+/*@font-face {
+    font-family: starWarsFont;
+    src: url("../fonts/Star_Jedi_Rounded.ttf");
+}*/
+
+header {
+	color: yellow;
+/*	font-family: starWarsFont;*/
+	font-size: 50px;
+}
+
+.container {
+	color: white;
+}
+
+.battleZoneBody {
+	height: 350px;
+}
+
+
+.battleZoneText {
+	width: 100%;
+	height: 20px;
+}
+
+.yourCharacterText {
+	display: inline-block;
+	float: left;
+}
+
+.enemyText {
+	display: inline-block;
+	float: right;
+}
+
+.enemy {
+	background-color: red;
+	color: white;
+}
+
+.enemy .caption {
+	color: inherit;
+}
+
+.selected {
+	background-color: green;
+	color: white;
+}
+
+.selected .caption {
+	color: inherit;
+}
+
+.characterSlots {
+	height: 280.33px;
+}
+
+#EnemyZone, #PlayerZone {
+	padding-top: 25px;
+}
