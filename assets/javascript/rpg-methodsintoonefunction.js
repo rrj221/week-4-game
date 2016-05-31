@@ -61,7 +61,7 @@ function attack(attacker, attackee) {       //there are two types of people in t
 	var attackeeId = "#"+attackee+"HpDisplay";
 	$(attackeeId).html("HP: "+characters[attackee].hp);
 	$('#attackUpdate').html("You attacked "+characters[attackee].name+" for "+characters[attacker].attack+" damage");
-
+	$('#counterUpdate').html("");
 	audioLightsaber.play();
 
     $("#button").prop("disabled", true);
@@ -259,14 +259,6 @@ $('.resetButton').on('click', function resetFunction() {
 	if (gameFlowCounter !== 4) {
 		return;
 	}
-
-	// if (gameFlowCounter === 3) {
-	// 	gameFlowCounter++;
-	// 	return;
-	// }
-	// if (gameFlowCounter !== 3) {
-	// 	return;
-	// }
 
 	console.log("reset button was clicked");
 
