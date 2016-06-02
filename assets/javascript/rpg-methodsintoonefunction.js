@@ -94,7 +94,7 @@ function dieAsAttackee(attackee) {
 	console.log("ouch I'm dead");
 	var deadAttackeeId = "#"+attackee;
 	$(deadAttackeeId).animate({height: '0px', width: '0px'}, 2000)
-		setTimeout(function() {
+	setTimeout(function() {
 		$(deadAttackeeId).appendTo(deadAttackeeId+"MainSlot");
 		$(deadAttackeeId).animate({height: "260.33px", width: "260.33px"});
 		$(deadAttackeeId).hide();
@@ -127,9 +127,13 @@ function dieAsAttackee(attackee) {
 function dieAsAttacker(attacker) {
 	console.log("ouch I'm dead");
 	var deadAttackerId = "#"+attacker;
-	$(deadAttackerId).appendTo(deadAttackerId+"MainSlot");
-	$(deadAttackerId).removeClass("selected");
-	$(deadAttackerId).hide();
+	$(deadAttackerId).animate({height: '0px', width: '0px'}, 2000)
+	setTimeout(function() {
+		$(deadAttackerId).appendTo(deadAttackerId+"MainSlot");
+		$(deadAttackerId).animate({height: "260.33px", width: "260.33px"});
+		$(deadAttackerId).removeClass("selected");
+		$(deadAttackerId).hide();
+	}, 2000);	
 	gameFlowCounter = 4;
 	audioDie.play();
 	$(".resetButton").html("Reset!");
