@@ -93,9 +93,18 @@ function counter(attackee, attacker) {
 function dieAsAttackee(attackee) {
 	console.log("ouch I'm dead");
 	var deadAttackeeId = "#"+attackee;
-	$(deadAttackeeId).appendTo(deadAttackeeId+"MainSlot");
+	$(deadAttackeeId).animate({height: '0px', width: '0px'}, 2000)
+		setTimeout(function() {
+		$(deadAttackeeId).appendTo(deadAttackeeId+"MainSlot");
+		$(deadAttackeeId).animate({height: "260.33px", width: "260.33px"});
+		$(deadAttackeeId).hide();
+		$(deadAttackeeId).removeClass("enemy");
+	}, 2000);
+
+	// $(deadAttackeeId).appendTo(deadAttackeeId+"MainSlot");
 	$(deadAttackeeId).removeClass("enemy");
-	$(deadAttackeeId).hide();
+	// $(deadAttackeeId).hide();
+	// $(deadAttackeeId).animate({height: "260.33px"});
 	gameFlowCounter = 1;
 	deadEnemyCount++;
 	audioKill.play();
@@ -205,7 +214,7 @@ $('#luke, #jawa, #solo, #vader').on('click', function startFunction() {
     gameFlowCounter++;
 });  
 
-//choose the enemy to fight against
+//choose the enemy to fight against - try to use enemy class here
 $('#luke, #jawa, #solo, #vader').on('click', function chooseEnemyFunction() {
 	//can't choose enemy before first character
 	if ($(this).attr("id") === selectedId) {
