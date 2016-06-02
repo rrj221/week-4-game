@@ -2,11 +2,13 @@ var gameFlowCounter = 0;
 var selectedId = '';
 var enemyId = '';
 var deadEnemyCount = 0;
+var musicCount = 0;
 
 var audioLightsaber = new Audio('assets/sounds/lightsaber.mp3');
 var audioDie = new Audio('assets/sounds/jabba_laugh.wav');
 var audioKill = new Audio('assets/sounds/chewbacca.wav');
-var audioSelect = new Audio('assets/sounds/r2-boing.mp3');
+var audioSelect = new Audio('assets/sounds/r2-beep-beep.mp3');
+var audioThemeSong = new Audio('assets/sounds/theme-song-short.mp3');
 
 var characters = {
 	'luke': {
@@ -42,6 +44,12 @@ var characters = {
 	}	
 };
 
+audioThemeSong.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+audioThemeSong.play();
+
 $(".attackButton").hide();
 $("#saber").hide();
 
@@ -64,10 +72,10 @@ function attack(attacker, attackee) {       //there are two types of people in t
 	$('#counterUpdate').html("");
 	audioLightsaber.play();
 
-    $("#button").prop("disabled", true);
+    $("#buttonAttack").prop("disabled", true);
     setTimeout(function() {
-    	$("#button").prop("disabled", false)
-    }, 300);
+    	$("#buttonAttack").prop("disabled", false)
+    }, 400);
 
 	// gameFlowCounter = 5;
 	$("#saber").show(0).delay(400).hide(0);
@@ -278,3 +286,16 @@ $('.resetButton').on('click', function resetFunction() {
 	$('.attackButton').html("Attack!");
 	reset();
 }); 
+
+$('#buttonMusic').on('click', function() {
+	if (musicCount === 0) {
+		audioThemeSong.pause();
+		musicCount = 1;
+		$(this).text("Play Annoying Music");
+	} else {
+		audioThemeSong.play()
+		musicCount = 0;
+		$(this).text("Pause Annoying Music");
+	}
+
+});
