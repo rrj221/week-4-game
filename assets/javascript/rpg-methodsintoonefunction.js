@@ -11,7 +11,7 @@ var audioSelect = new Audio('assets/sounds/r2-beep-beep.mp3');
 var audioThemeSong = new Audio('assets/sounds/theme-song-short.mp3');
 
 var characters = {
-	'luke': {
+	luke: {
 		name: 'Luke Skywalker',
 		hp: 120,
 		attack: 0,
@@ -19,7 +19,7 @@ var characters = {
 		ca: 15,
 	},
 
-	'jawa': {
+	jawa: {
 		name: 'A pack of wild jawas',
 		hp: 100,
 		attack: 0,
@@ -27,7 +27,7 @@ var characters = {
 		ca: 5,			
 	},
 
-	'solo': {
+	solo: {
 		name: 'Han Solo',
 		hp: 150,
 		attack: 0,
@@ -35,7 +35,7 @@ var characters = {
 		ca: 20,			
 	},
 
-	'vader': {
+	vader: {
 		name: 'Darth Vader',
 		attack: 0,
 		hp: 180,
@@ -63,6 +63,7 @@ function counterAfterAnimate() {
 
 function attack(attacker, attackee) {       //there are two types of people in this world
 	console.log(characters[attackee].hp);	//the attacker and the attackee
+	console.log(characters[attacker]);
 	characters[attacker].attack = characters[attacker].attack + characters[attacker].ab
 	characters[attackee].hp = characters[attackee].hp - characters[attacker].attack;
 	console.log(characters[attackee].hp);

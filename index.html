@@ -7,7 +7,7 @@
 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 </head>
 <body>
-	<header>Star Wars RPG</header>
+	<header>STAR WARS RPG</header>
 	<div class="container">
 		
 		<div class="row">
@@ -59,9 +59,11 @@
 		    </div>		    
 		</div>
 
-		<div class="row battleZone">
+		<div class="row battleZoneTitle col-md-12">
 			<p>Battle Zone</p>
-			<div class="battleZoneText">
+		</div>
+		<div class="row battleZoneCharacters">
+			<div class="battleZoneText col-md-12">
 				<p class="yourCharacterText">Your Character</p>
 				<p class="enemyText">Enemy</p>
 			</div>
@@ -78,12 +80,15 @@
 			</div>
 		</div>
 		<div class="row battleZone battleZoneButtons">
-			<p><a id="buttonAttack" class="btn btn-primary btn-lg attackButton resetButton" href="#" role="button" >Attack!</a></p>
+			<div class="col-md-3">
+				<p><a id="buttonAttack" class="btn btn-primary btn-lg attackButton resetButton" href="#" role="button" >Attack!</a></p>
+			</div>
+			<div class="col-md-9 battleZone battleUpdates">
+				<p id="attackUpdate" class="updates"></p>
+				<p id="counterUpdate" class="updates"></p>
+			</div>
 		</div>
-		<div class="row battleZone battleUpdates">
-			<p id="attackUpdate"></p>
-			<p id="counterUpdate"></p>
-		</div>
+
 
 
 
@@ -98,7 +103,7 @@
 
 <!-- <script type="text/javascript" src="assets/javascript/rpg.js"></script> -->
 <!-- <script type="text/javascript" src="assets/javascript/rpg-somestuffworkingbeforehashmaptry.js"></script> -->
-<script type="text/javascript" src="assets/javascript/rpg-methodsintoonefunction.js"></script>
+<script type="text/javascript" src="assets/javascript/rpg.js"></script>
 
 </body>
 </html>
