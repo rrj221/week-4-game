@@ -73,15 +73,17 @@ function attack(attacker, attackee) {       //there are two types of people in t
 	$('#attackUpdate').html("You attacked "+characters[attackee].name+" for "+characters[attacker].attack+" damage");
 	$('#counterUpdate').html("");
 	
-	//fire the lazor 
-	//this is cool because the user can't keep hitting the attack button
-	//and ruin the experience for everyone involved
+	//fire the lazor
 	audioLightsaber.play();
-    $(".attackButton").off('click');
-    setTimeout(function() {
-    	$(".attackButton").on('click', attackButtonFunction);
-    	$(".resetButton").on('click', resetButtonFunction);
-    }, 1600);
+    // $(".attackButton").off('click');
+    // setTimeout(function() {
+    // 	$(".attackButton").on('click', attackFunction);
+    // }, 2000);
+
+    // $("#buttonAttack").prop("disabled", true);
+    // setTimeout(function() {
+    // 	$("#buttonAttack").prop("disabled", false)
+    // }, 400);
 
 	$("#saber").show(0).delay(400).hide(0);
 };
@@ -103,18 +105,11 @@ function dieAsAttackee(attackee) {
 	console.log("ouch I'm dead");
 	var deadAttackeeId = "#"+attackee;
 	$(deadAttackeeId).animate({height: '0px', width: '0px'}, 2000)
-
-	//I did a different trick to disable the reset button
-	//Because I couldn't get the other way to work
-	$(".attackButton").removeClass('resetButton');
 	setTimeout(function() {
 		$(deadAttackeeId).appendTo(deadAttackeeId+"MainSlot");
 		$(deadAttackeeId).animate({height: "260.33px", width: "260.33px"}, 1);
 		$(deadAttackeeId).hide();
 		$(deadAttackeeId).removeClass("enemy");
-
-    	$(".attackButton").addClass('resetButton');
-    	$(".resetButton").on('click', resetButtonFunction);		
 	}, 2000);
 
 	$(deadAttackeeId).removeClass("enemy");
@@ -132,7 +127,7 @@ function dieAsAttackee(attackee) {
 	}	
 	if (deadEnemyCount === 3) {
 		gameFlowCounter = 3;
-		$(".attackButton").html("Reset!");
+		$(".resetButton").html("Reset!");
 		$("#attackUpdate").html("You Won!");
 		$("#counterUpdate").html("Press the reset button to play again");	
 	}
@@ -142,24 +137,15 @@ function dieAsAttacker(attacker) {
 	console.log("I'm dead ouch");
 	var deadAttackerId = "#"+attacker;
 	$(deadAttackerId).animate({height: '0px', width: '0px'}, 2000)
-
-	//I did a different trick to disable the reset button
-	//Because I couldn't get the other way to work
-	$(".attackButton").removeClass('resetButton');
-	console.log("i was supposed to disable here");
 	setTimeout(function() {
 		$(deadAttackerId).appendTo(deadAttackerId+"MainSlot");
 		$(deadAttackerId).animate({height: "260.33px", width: "260.33px"}, 1);
 		$(deadAttackerId).removeClass("selected");
 		$(deadAttackerId).hide();
-
-    	$(".attackButton").addClass('resetButton');
-    	$(".resetButton").on('click', resetButtonFunction);	
-
 	}, 2000);	
 	gameFlowCounter = 4;
 	audioDie.play();
-	$(".attackButton").html("Reset!");
+	$(".resetButton").html("Reset!");
 	$("#attackUpdate").html("You Lost!");
 	$("#counterUpdate").html("Press the reset button to play again");
 }
@@ -261,14 +247,17 @@ $('#luke, #jawa, #solo, #vader').on('click', function chooseEnemyFunction() {
 	}
 }); 
 
-function attackButtonFunction() {
+$('.attackButton').on('click', function attackFunction() {
+    if ($("#saber").is(':animated'))
+    {
+        return false;
+    }	
 	//also can't choose enemy if first enemy is still alive
 	if (gameFlowCounter === 2) {
 		attack(selectedId, enemyId);
 		if (characters[enemyId].hp <= 0) {
 			console.log("Hi Ryan");
 			dieAsAttackee(enemyId);
-			$('.attackButton').off('click');
 			return;
 		}
 		
@@ -280,11 +269,9 @@ function attackButtonFunction() {
 			}
     	}, 1000);
 	}
-}
+}); 
 
-$('.attackButton').on('click', attackButtonFunction); 
-
-function resetButtonFunction() {
+$('.resetButton').on('click', function resetFunction() {
 	//on the click that the attacker dies, it is regestered so i had to make the counter 4 not three
 	if (gameFlowCounter === 3) {
 		gameFlowCounter++;
@@ -298,9 +285,7 @@ function resetButtonFunction() {
 
 	$('.attackButton').html("Attack!");
 	reset();
-}
- 
-$('.resetButton').on('click', resetButtonFunction); 
+}); 
 
 $('#buttonMusic').on('click', function() {
 	if (musicCount === 0) {

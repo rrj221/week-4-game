@@ -2,7 +2,6 @@ body {
 	background-image: url("../images/deathStar.jpg");
 }
 
-/*Failing to decode*/
 @font-face {
     font-family: starWarsFont;
     src: url("../fonts/STARWARS/STARWARS.ttf");
@@ -12,6 +11,7 @@ header {
 	color: yellow;
 	font-family: starWarsFont;
 	font-size: 50px;
+	padding-left: 20px;
 }
 
 .container {

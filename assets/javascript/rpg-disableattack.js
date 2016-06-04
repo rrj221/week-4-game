@@ -132,7 +132,7 @@ function dieAsAttackee(attackee) {
 	}	
 	if (deadEnemyCount === 3) {
 		gameFlowCounter = 3;
-		$(".attackButton").html("Reset!");
+		$(".resetButton").html("Reset!");
 		$("#attackUpdate").html("You Won!");
 		$("#counterUpdate").html("Press the reset button to play again");	
 	}
