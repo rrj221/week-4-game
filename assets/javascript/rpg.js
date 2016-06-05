@@ -10,21 +10,26 @@ var audioKill = new Audio('assets/sounds/chewbacca.wav');
 var audioSelect = new Audio('assets/sounds/r2-beep-beep.mp3');
 var audioThemeSong = new Audio('assets/sounds/theme-song-short.mp3');
 
+function randomNumForCounter() {
+	var num = Math.floor(Math.random()*5);
+	return num;	
+}
+
 var characters = {
 	luke: {
 		name: 'Luke Skywalker',
 		hp: 120,
 		attack: 0,
 		ab: 8,
-		ca: 15,
+		ca: 13,
 	},
 
 	jawa: {
 		name: 'A pack of wild jawas',
 		hp: 100,
 		attack: 0,
-		ab: 10,
-		ca: 5,			
+		ab: 20,
+		ca: 3,			
 	},
 
 	solo: {
@@ -32,7 +37,7 @@ var characters = {
 		hp: 150,
 		attack: 0,
 		ab: 6,
-		ca: 20,			
+		ca: 18,			
 	},
 
 	vader: {
@@ -40,7 +45,7 @@ var characters = {
 		attack: 0,
 		hp: 180,
 		ab: 4,
-		ca: 25, 		
+		ca: 23, 		
 	}	
 };
 
@@ -88,11 +93,12 @@ function attack(attacker, attackee) {       //there are two types of people in t
  
 function counter(attackee, attacker) {
 	console.log(characters[attacker].hp);
-	characters[attacker].hp = characters[attacker].hp - characters[attackee].ca;
+	var counterAttackPoints = characters[attackee].ca + randomNumForCounter();
+	characters[attacker].hp = characters[attacker].hp - counterAttackPoints;
 	console.log(characters[attacker].hp);	
 	var attackerId = "#"+attacker+"HpDisplay";
 	$(attackerId).html("HP: "+characters[attacker].hp);
-	$("#counterUpdate").html(characters[attackee].name+" attacked you for "+characters[attackee].ca+" damage");
+	$("#counterUpdate").html(characters[attackee].name+" attacked you for "+counterAttackPoints+" damage");
 
 	//fire the lazors
 	audioLightsaber.play();
