@@ -28,7 +28,7 @@ var characters = {
 		name: 'A pack of wild jawas',
 		hp: 100,
 		attack: 0,
-		ab: 20,
+		ab: 15,
 		ca: 3,			
 	},
 
@@ -92,10 +92,8 @@ function attack(attacker, attackee) {       //there are two types of people in t
 };
  
 function counter(attackee, attacker) {
-	console.log(characters[attacker].hp);
 	var counterAttackPoints = characters[attackee].ca + randomNumForCounter();
 	characters[attacker].hp = characters[attacker].hp - counterAttackPoints;
-	console.log(characters[attacker].hp);	
 	var attackerId = "#"+attacker+"HpDisplay";
 	$(attackerId).html("HP: "+characters[attacker].hp);
 	$("#counterUpdate").html(characters[attackee].name+" attacked you for "+counterAttackPoints+" damage");
@@ -106,7 +104,6 @@ function counter(attackee, attacker) {
 };
 
 function dieAsAttackee(attackee) {
-	console.log("ouch I'm dead");
 	var deadAttackeeId = "#"+attackee;
 	$(deadAttackeeId).animate({height: '0px', width: '0px'}, 2000)
 
@@ -131,12 +128,10 @@ function dieAsAttackee(attackee) {
 	if (deadEnemyCount === 1) {
 		$("#attackUpdate").html("You killed "+characters[enemyId].name);
 		$("#counterUpdate").html("Select another opponent");
-	}
-	if (deadEnemyCount === 2) {
+	} else if (deadEnemyCount === 2) {
 		$("#attackUpdate").html("You killed "+characters[enemyId].name);
 		$("#counterUpdate").html("Select another opponent");
-	}	
-	if (deadEnemyCount === 3) {
+	} else if (deadEnemyCount === 3) {
 		gameFlowCounter = 3;
 		$(".attackButton").html("Reset!");
 		$("#attackUpdate").html("You Won!");
@@ -145,14 +140,12 @@ function dieAsAttackee(attackee) {
 }
 
 function dieAsAttacker(attacker) {
-	console.log("I'm dead ouch");
 	var deadAttackerId = "#"+attacker;
 	$(deadAttackerId).animate({height: '0px', width: '0px'}, 2000)
 
 	//I did a different trick to disable the reset button
 	//Because I couldn't get the other way to work
 	$(".attackButton").removeClass('resetButton');
-	console.log("i was supposed to disable here");
 	setTimeout(function() {
 		$(deadAttackerId).appendTo(deadAttackerId+"MainSlot");
 		$(deadAttackerId).animate({height: "260.33px", width: "260.33px"}, 1);
@@ -175,9 +168,7 @@ function moveWinnerUp(attacker, attackee) {
 	if (characters[attacker].hp > 0) {
 		var winnerId = "#"+attacker;
 		$(winnerId).appendTo(winnerId+"MainSlot");
-	}	
-
-	if (characters[attackee].hp > 0) {
+	} else if (characters[attackee].hp > 0) {
 		var winnerId2 = "#"+attackee;
 		$(winnerId2).appendTo(winnerId2+"MainSlot");
 	}	
@@ -272,7 +263,6 @@ function attackButtonFunction() {
 	if (gameFlowCounter === 2) {
 		attack(selectedId, enemyId);
 		if (characters[enemyId].hp <= 0) {
-			console.log("Hi Ryan");
 			dieAsAttackee(enemyId);
 			$('.attackButton').off('click');
 			return;
@@ -295,12 +285,9 @@ function resetButtonFunction() {
 	if (gameFlowCounter === 3) {
 		gameFlowCounter++;
 		return;
-	}
-	if (gameFlowCounter !== 4) {
+	} else if (gameFlowCounter !== 4) {
 		return;
 	}
-
-	console.log("reset button was clicked");
 
 	$('.attackButton').html("Attack!");
 	reset();
@@ -318,5 +305,4 @@ $('#buttonMusic').on('click', function() {
 		musicCount = 0;
 		$(this).text("Pause Annoying Music");
 	}
-
 });
