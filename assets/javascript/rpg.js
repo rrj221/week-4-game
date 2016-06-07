@@ -58,14 +58,6 @@ audioThemeSong.play();
 $(".attackButton").hide();
 $("#saber").hide();
 
-function attackAfterAnimate() {
-	gameFlowCounter = 2;
-}
-
-function counterAfterAnimate() {
-	gameFlowCounter = 2;
-}
-
 function attack(attacker, attackee) {       //there are two types of people in this world
 											//the attacker and the attackee
 	//updates hp's and attack's										
